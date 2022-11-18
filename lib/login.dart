@@ -8,6 +8,9 @@ import 'package:flutterviz/modelos.dart';
 class login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    String cedula = '';
+    String password = '';
+    final user = '';
     return Scaffold(
       backgroundColor: Color(0xffe6e6e6),
       body: Stack(
@@ -73,6 +76,7 @@ class login extends StatelessWidget {
                       padding:
                           EdgeInsets.symmetric(vertical: 16, horizontal: 0),
                       child: TextField(
+                        onChanged: ((value) => cedula = value),
                         controller: TextEditingController(),
                         obscureText: false,
                         textAlign: TextAlign.left,
@@ -99,7 +103,7 @@ class login extends StatelessWidget {
                             borderSide:
                                 BorderSide(color: Color(0xff000000), width: 1),
                           ),
-                          hintText: "Enter Email",
+                          hintText: "Enter cedula",
                           hintStyle: TextStyle(
                             fontWeight: FontWeight.w400,
                             fontStyle: FontStyle.normal,
@@ -114,6 +118,7 @@ class login extends StatelessWidget {
                       ),
                     ),
                     TextField(
+                      onChanged: (value) => password = value,
                       controller: TextEditingController(),
                       obscureText: false,
                       textAlign: TextAlign.start,
@@ -159,10 +164,29 @@ class login extends StatelessWidget {
                         alignment: Alignment(-0.1, 0.0),
                         child: MaterialButton(
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: ((context) => Home())));
+                            db.instance
+                                .selectArgs('usuarios',
+                                    'cedula ="$cedula" and password ="$password"')
+                                .then((user) {
+                              if (!user.isEmpty) {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: ((context) => Home())));
+                              } else {
+                                AlertDialog(
+                                    title: Text('Notification'),
+                                    content: Text('user or password invalid'),
+                                    actions: <Widget>[
+                                      TextButton(
+                                        child: const Text('Approve'),
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                      ),
+                                    ]);
+                              }
+                            });
                           },
                           color: Color(0xff3a57e8),
                           elevation: 0,
