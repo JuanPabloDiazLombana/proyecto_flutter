@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutterviz/Buscar_Diagnostico.dart';
+import 'package:flutterviz/Buscar_Medico.dart';
 import 'package:flutterviz/RegistroM.dart';
 import 'package:flutterviz/RegistroP.dart';
 
@@ -51,7 +52,7 @@ class Home extends StatelessWidget {
             child: MaterialButton(
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: ((context) => RegistroM())));
+                    MaterialPageRoute(builder: ((context) => Buscar_Medico())));
               },
               color: Color(0xff3a57e8),
               elevation: 0,
@@ -61,7 +62,7 @@ class Home extends StatelessWidget {
               ),
               padding: EdgeInsets.all(16),
               child: Text(
-                "Crear medico ",
+                "Buscar medico",
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w700,

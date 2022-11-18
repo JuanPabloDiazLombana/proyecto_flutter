@@ -8,14 +8,6 @@ void main() {
 
   // db.instance.insert(
   //     'pacientes', PacienteModel('a', '123', '#123', '1234567890').toMap());
-  db.instance
-      .insertString('pacientes',
-          PacienteModel('b', '321', '#123', '1234567890').toString())
-      .then((value) {
-    db.instance.select('pacientes').then((value) {
-      print(value);
-    });
-  });
 
   runApp(MyApp());
 }
