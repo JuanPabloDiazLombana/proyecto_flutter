@@ -124,7 +124,9 @@ class Diagnostico extends StatelessWidget {
                   ),
                 ),
                 MaterialButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   color: Color(0xff3a57e8),
                   elevation: 0,
                   shape: RoundedRectangleBorder(
@@ -133,7 +135,7 @@ class Diagnostico extends StatelessWidget {
                   ),
                   padding: EdgeInsets.all(16),
                   child: Text(
-                    "Button",
+                    "Regresar",
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,

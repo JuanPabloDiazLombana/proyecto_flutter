@@ -1,10 +1,15 @@
-///File download from FlutterViz- Drag and drop a tools. For more details visit https://flutterviz.io/
-
 import 'package:flutter/material.dart';
+
+import 'package:flutterviz/db.dart';
+import 'package:flutterviz/modelos.dart';
 
 class RegistroM extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    String nombre = '';
+    String cedula = '';
+    String password = '';
+    String tipoUsuario = '';
     return Scaffold(
       backgroundColor: Color(0xfff1f1f1),
       body: Column(
@@ -79,6 +84,7 @@ class RegistroM extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
                 child: TextField(
+                  onChanged: (value) => nombre = value,
                   controller: TextEditingController(),
                   obscureText: false,
                   textAlign: TextAlign.start,
@@ -130,6 +136,7 @@ class RegistroM extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
                 child: TextField(
+                  onChanged: (value) => cedula = value,
                   controller: TextEditingController(),
                   obscureText: false,
                   textAlign: TextAlign.start,
@@ -181,108 +188,7 @@ class RegistroM extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
                 child: TextField(
-                  controller: TextEditingController(),
-                  obscureText: false,
-                  textAlign: TextAlign.start,
-                  maxLines: 1,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontStyle: FontStyle.normal,
-                    fontSize: 14,
-                    color: Color(0xff000000),
-                  ),
-                  decoration: InputDecoration(
-                    disabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(4.0),
-                      borderSide:
-                          BorderSide(color: Color(0xff000000), width: 1),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(4.0),
-                      borderSide:
-                          BorderSide(color: Color(0xff000000), width: 1),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(4.0),
-                      borderSide:
-                          BorderSide(color: Color(0xff000000), width: 1),
-                    ),
-                    labelText: "Telefono",
-                    labelStyle: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontStyle: FontStyle.normal,
-                      fontSize: 14,
-                      color: Color(0xff000000),
-                    ),
-                    hintText: "Enter Text",
-                    hintStyle: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontStyle: FontStyle.normal,
-                      fontSize: 14,
-                      color: Color(0xff000000),
-                    ),
-                    filled: true,
-                    fillColor: Color(0xfff2f2f3),
-                    isDense: false,
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
-                child: TextField(
-                  controller: TextEditingController(),
-                  obscureText: false,
-                  textAlign: TextAlign.start,
-                  maxLines: 1,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontStyle: FontStyle.normal,
-                    fontSize: 14,
-                    color: Color(0xff000000),
-                  ),
-                  decoration: InputDecoration(
-                    disabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(4.0),
-                      borderSide:
-                          BorderSide(color: Color(0xff000000), width: 1),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(4.0),
-                      borderSide:
-                          BorderSide(color: Color(0xff000000), width: 1),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(4.0),
-                      borderSide:
-                          BorderSide(color: Color(0xff000000), width: 1),
-                    ),
-                    labelText: "Correo",
-                    labelStyle: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontStyle: FontStyle.normal,
-                      fontSize: 14,
-                      color: Color(0xff000000),
-                    ),
-                    hintText: "Enter Text",
-                    hintStyle: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontStyle: FontStyle.normal,
-                      fontSize: 14,
-                      color: Color(0xff000000),
-                    ),
-                    filled: true,
-                    fillColor: Color(0xfff2f2f3),
-                    isDense: false,
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
-                child: TextField(
+                  onChanged: (value) => password = value,
                   controller: TextEditingController(),
                   obscureText: false,
                   textAlign: TextAlign.start,
@@ -331,6 +237,58 @@ class RegistroM extends StatelessWidget {
                   ),
                 ),
               ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+                child: TextField(
+                  onChanged: (value) => tipoUsuario = value,
+                  controller: TextEditingController(),
+                  obscureText: false,
+                  textAlign: TextAlign.start,
+                  maxLines: 1,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w400,
+                    fontStyle: FontStyle.normal,
+                    fontSize: 14,
+                    color: Color(0xff000000),
+                  ),
+                  decoration: InputDecoration(
+                    disabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(4.0),
+                      borderSide:
+                          BorderSide(color: Color(0xff000000), width: 1),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(4.0),
+                      borderSide:
+                          BorderSide(color: Color(0xff000000), width: 1),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(4.0),
+                      borderSide:
+                          BorderSide(color: Color(0xff000000), width: 1),
+                    ),
+                    labelText: "Tipo de usuario",
+                    labelStyle: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontStyle: FontStyle.normal,
+                      fontSize: 14,
+                      color: Color(0xff000000),
+                    ),
+                    hintText: "Enter Text",
+                    hintStyle: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontStyle: FontStyle.normal,
+                      fontSize: 14,
+                      color: Color(0xff000000),
+                    ),
+                    filled: true,
+                    fillColor: Color(0xfff2f2f3),
+                    isDense: false,
+                    contentPadding:
+                        EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                  ),
+                ),
+              ),
             ],
           ),
           SizedBox(
@@ -345,7 +303,20 @@ class RegistroM extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.fromLTRB(10, 0, 5, 0),
                 child: MaterialButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    db.instance
+                        .insertString(
+                            'usuarios',
+                            UsuarioModel(
+                                    nombre, cedula, password, tipoUsuario, 1)
+                                .toString())
+                        .then((value) {
+                      db.instance.select('usuarios').then((value) {
+                        print(value);
+                      });
+                    });
+                    Navigator.pop(context);
+                  },
                   color: Color(0xff3a57e8),
                   elevation: 0,
                   shape: RoundedRectangleBorder(

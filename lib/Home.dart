@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutterviz/Buscar_Diagnostico.dart';
 import 'package:flutterviz/RegistroM.dart';
 import 'package:flutterviz/RegistroP.dart';
-import 'package:flutterviz/diaglist.dart';
 
 class Home extends StatelessWidget {
   @override
